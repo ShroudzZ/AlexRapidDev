@@ -6,11 +6,11 @@ using System.Data.Entity;
 namespace ALEXFW.Entity.UserAndRole
 {
     [EntityAuthentication(AllowAnonymous = false,
-        AddRolesRequired = new object[] { AdminGroup.管理员 },
-        EditRolesRequired = new object[] { AdminGroup.管理员 },
-        RemoveRolesRequired = new object[] { AdminGroup.管理员 },
-        ViewRolesRequired = new object[] { AdminGroup.管理员 })]
-    [DisplayName("管理员")]
+        AddRolesRequired = new object[] { AdminGroup.店长 },
+        EditRolesRequired = new object[] { AdminGroup.店长 },
+        RemoveRolesRequired = new object[] { AdminGroup.店长 },
+        ViewRolesRequired = new object[] { AdminGroup.店长 })]
+    [DisplayName("管理人员")]
     [DisplayColumn("Username", "CreateDate", true)]
     [Parent(typeof(Department), "Department")]
     public class Admin : UserBase
@@ -42,10 +42,13 @@ namespace ALEXFW.Entity.UserAndRole
 
         [Required]
         [Display(Name = "用户权限", Order = 5)]
-        [Searchable]
+        [PropertyAuthentication(EditRolesRequired = new object[] { AdminGroup.管理员 },
+            ViewRolesRequired = new object[] { AdminGroup.店长 })]
         public virtual AdminGroup Group { get; set; }
 
         [Display(Name = "店铺", Order = 4)]
+        [PropertyAuthentication(EditRolesRequired = new object[] { AdminGroup.管理员 },
+            ViewRolesRequired = new object[] { AdminGroup.店长 })]
         public virtual  Department Department { get; set; }
         
         //此方法用于判断用户角色

@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using ALEXFW.CommonUtility;
+using ALEXFW.Entity.Members;
 using ALEXFW.Entity.UserAndRole;
 
 namespace ALEXFW.DeskTop.Controllers
@@ -91,6 +92,20 @@ namespace ALEXFW.DeskTop.Controllers
                 return RedirectToAction("SignIn");
             ALEXFWAuthentication.SignOut();
             return RedirectToAction("SignIn");
+        }
+
+        /// <summary>
+        /// 个人信息
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult My()
+        {
+            return View();
+        }
+
+        public ActionResult SignUp()
+        {
+            return View();
         }
     }
 }

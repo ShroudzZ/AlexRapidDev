@@ -6,7 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ALEXFW.Entity.UserAndRole;
 using ALEXFW.Entity;
-using ALEXFW.Entity.Demos;
+using ALEXFW.Entity.Gifts;
+using ALEXFW.Entity.Members;
 
 namespace ALEXFW.DataAccess
 {
@@ -14,7 +15,8 @@ namespace ALEXFW.DataAccess
     {
         public DbSet<Department> Departments { get; set; }
         public DbSet<Admin> Admins { get; set; }
-        public DbSet< Member> Members { get; set; }   
+        public DbSet<Member> Members { get; set; }   
+        public DbSet<MemberGroup> MemberGroups { get; set; }
          
         //测试实体的上下文
         public DbSet<Category> Categories { get; set; }
